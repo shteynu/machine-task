@@ -1,0 +1,39 @@
+<main class="main">
+  <div class="content">
+    <div>
+      <button (click)="startJob()">Start Job</button>
+    </div>
+
+      <div *ngFor="let machineKey of machineKeys">
+        <h3>{{ status.machines[machineKey]?.name }}</h3>
+        <div>
+          <strong>Current Jobs:</strong>
+          <ul>
+            <li *ngFor="let job of status.machines[machineKey]?.currentJobs">
+              {{ job.id }} - {{ job.status }}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <strong>Queue:</strong>
+          <ul>
+            <li *ngFor="let job of status.machines[machineKey]?.queue">
+              {{ job.id }} - {{ job.status }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h3>Finished Jobs</h3>
+        <ul>
+          <li *ngFor="let job of status.finishedJobs">
+            {{ job.id }} - {{ job.status }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</main>
+
+
